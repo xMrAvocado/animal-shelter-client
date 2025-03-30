@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import service from "../../services/config.services";
 
 function Signup() {
@@ -76,6 +76,9 @@ function Signup() {
 
         {errorMessage !== null ? <p>{errorMessage}</p> : null}
       </form>
+
+      <h3>You aready have an account?</h3>
+      <Link to={"/login"}><button>Log In</button></Link>
     </div>
   );
 }

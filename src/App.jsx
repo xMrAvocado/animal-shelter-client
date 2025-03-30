@@ -9,6 +9,7 @@ import Signup from "./pages/auth/Signup"
 // components
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer";
+import OnlyPrivate from "./components/OnlyPrivate";
 
 /*Aparte de clase lunes, ver la del martes
 
@@ -26,10 +27,10 @@ function App() {
       <hr />
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        {/*<Route path="/" element={<HomePage />} />*/}
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-
+        <Route path="/" element={<OnlyPrivate> <HomePage /> </OnlyPrivate>} />
         {/* error FE routes here... */}
 
       </Routes>
