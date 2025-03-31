@@ -9,7 +9,7 @@ function AuthWrapper(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loggedUserId, setLoggedUserId] = useState(null);
     const [isAuthenticatingUser, setIsAuthenticatingUser] = useState(true);
-    const [userRole, setUserRole] = useState(null); //Pendiente de crear y comprobar los roles
+    const [userRole, setUserRole] = useState(null);
 
     useEffect(()=>{
         authenticateUser()
@@ -38,6 +38,7 @@ function AuthWrapper(props) {
     const passedContext = {
         isLoggedIn,
         loggedUserId,
+        userRole,
         authenticateUser
     }
 

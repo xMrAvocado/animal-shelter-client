@@ -32,7 +32,7 @@ function Login() {
       localStorage.setItem("authToken", response.data.authToken)
 
       await authenticateUser();
-      navigate("/private-page-example") //Pendiente por crear y comprobar la pagina privada
+      navigate("/")
     } catch (error) {
       console.log(error)
       console.log(error)

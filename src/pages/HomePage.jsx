@@ -1,7 +1,9 @@
+import AnimalList from "./AnimalList"
+
 function Home() {
     return (
       <div className="pageDiv">
-        <h1>Home</h1>
+        <AnimalList/>
       </div>
     )
   }
