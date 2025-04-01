@@ -29,7 +29,7 @@ function EventList() {
           .map((eachEvent) => {
             return (
                 <div id="eachEventList">
-                    <h2>{eachEvent.organizer}</h2> 
+                    <h2>{eachEvent.organizer.name}</h2> 
                   <h2>{eachEvent.name}</h2>
                   <h2>{eachEvent.date}/{eachEvent.time}</h2>
                   <p>{eachEvent.description}</p>

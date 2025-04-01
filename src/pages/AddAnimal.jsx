@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import service from "../services/config.services";
 
 function AddAnimal() {
   const [nuevoAnimal, setNuevoAnimal] = useState({
@@ -50,10 +51,14 @@ function AddAnimal() {
           <label>
             Type:&nbsp;
             <select
+              name="type"
               onChange={handleAll}
               value={nuevoAnimal.type}
               id="addTypeSelector"
             >
+              <option className="optionType" value="">
+                Option
+              </option>
               <option className="optionType" value="Dog">
                 Dog
               </option>
@@ -97,11 +102,15 @@ function AddAnimal() {
           <label>
             Gender:&nbsp;
             <select
+              name="gender"
               onChange={handleAll}
               value={nuevoAnimal.gender}
               id="addGenderSelector"
             >
-              <option className="optionType" value="Male">
+              <option className="optionType" value="">
+                Option
+              </option>
+              <option className="optionType" value="Male" selected>
                 Male
               </option>
               <option className="optionType" value="Female">
@@ -123,7 +132,7 @@ function AddAnimal() {
             Image:&nbsp;
             <input
               value={nuevoAnimal.img}
-              name="image"
+              name="img"
               type="url"
               placeholder="Image"
               onChange={handleAll}

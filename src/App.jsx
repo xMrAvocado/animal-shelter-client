@@ -18,6 +18,7 @@ import EventList from "./pages/EventList";
 import AddEvent from "./pages/AddEvent";
 import EventDetails from "./pages/EventDetails";
 import EditAnimal from "./pages/EditAnimal";
+import EditEvent from "./pages/EditEvent";
 
 
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="/add-animal" element={<AddAnimal/>} />
         <Route path="/add-event" element={<AddEvent/>} />
         <Route path="/animals/edit/:animalId" element={<EditAnimal/>} />
+        <Route path="/events/edit/:eventId" element={<EditEvent/>} />
         <Route path="/animals/:animalId" element={<AnimalDetails/>} />
         <Route path="/events/:eventId" element={<EventDetails/>} />
         <Route path="/events" element={<EventList/>} />

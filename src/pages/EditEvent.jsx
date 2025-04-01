@@ -1,6 +1,7 @@
 import { useState, useParams } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import service from "../services/config.services";
 
 function EditEvent() {
     const parametrosDinamicos = useParams();
@@ -8,15 +9,19 @@ function EditEvent() {
   
     const [eventEdited, setEventEdited] = useState(null);
   
-    useEffect(async () => {
-      try {
-        const response = await service.get(
-          `/events/${parametrosDinamicos.eventId}`
-        );
-        setEventEdited(response.data);
-      } catch (error) {
-        console.log(error);
-      }
+    useEffect( () => {
+      const getData = async () => {
+        try {
+          const response = await service.get(
+            `/events/${parametrosDinamicos.eventId}`
+          );
+          setEvent(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+  
+      getData();
     }, [parametrosDinamicos.eventId]);
     
     const handleAll = (event) => {
@@ -36,6 +41,21 @@ function EditEvent() {
         console.log(error);
       }
   };
+
+  if (eventEdited === null) {
+    return (
+      <div
+        style={{
+          textAlign: "center",
+          paddingTop: "200px",
+          alignItems: "center",
+        }}
+      >
+        <h3>Buscando data del evento...</h3>
+      </div>
+    );
+  }
+
   return (
     <div className="pageDiv">
       <form onSubmit={handleSubmit}>

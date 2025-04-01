@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import service from "../services/config.services";
 
 function EditAnimal() {
     const parametrosDinamicos = useParams();
@@ -8,15 +9,19 @@ function EditAnimal() {
 
   const [animal, setAnimal] = useState(null);
 
-  useEffect(async () => {
-    try {
-      const response = await service.get(
-        `/animals/${parametrosDinamicos.animalId}`
-      );
-      setAnimal(response.data);
-    } catch (error) {
-      console.log(error);
-    }
+  useEffect( () => {
+    const getData = async () => {
+      try {
+        const response = await service.get(
+          `/animals/${parametrosDinamicos.animalId}`
+        );
+        setAnimal(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getData();
   }, [parametrosDinamicos.animalId]);
 
   const handleAll = (event) => {
@@ -36,6 +41,21 @@ function EditAnimal() {
         console.log(error);
       }
   };
+
+  if (animal === null) {
+    return (
+      <div
+        style={{
+          textAlign: "center",
+          paddingTop: "200px",
+          alignItems: "center",
+        }}
+      >
+        <h3>Buscando data del animal...</h3>
+      </div>
+    );
+  }
+
   return (
     <div className="pageDiv">
       <form onSubmit={handleSubmit}>
@@ -54,6 +74,7 @@ function EditAnimal() {
           <label>
             Type:&nbsp;
             <select
+              name="type"
               onChange={handleAll}
               value={animal.type}
               id="addTypeSelector"
@@ -101,6 +122,7 @@ function EditAnimal() {
           <label>
             Gender:&nbsp;
             <select
+              name="gender"
               onChange={handleAll}
               value={animal.gender}
               id="addGenderSelector"

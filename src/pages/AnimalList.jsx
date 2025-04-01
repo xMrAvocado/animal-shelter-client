@@ -18,7 +18,7 @@ function AnimalList() {
     const getData = async () => {
       try {
         const response = await service.get(
-          `/animals/${animalType}`
+          `/animals/type/${animalType}`
         );
         setListAnimals(response.data);
       } catch (error) {
@@ -65,6 +65,7 @@ function AnimalList() {
                 <div id="eachAnimalList">
                     <img src={eachAnimal.img} width="250px"></img>
                   <h2>{eachAnimal.name}</h2>
+                  <h2>{eachAnimal.creator.name}</h2>
                   <Link key={eachAnimal._id} to={`/animals/${eachAnimal._id}`}><button>Details</button></Link>
                 </div>
             );
