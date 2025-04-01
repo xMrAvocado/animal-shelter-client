@@ -1,31 +1,36 @@
-import { useState } from "react";
+import { useState, useParams } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-function AddEvent() {
-  const [nuevoEvento, setNuevoEvento] = useState({
-    name: "",
-    date: "",
-    time: "",
-    description: "",
-    organizer: "",
-    participants: [],
-  });
-
-  const navigate = useNavigate();
-
-  const handleAll = (event) => {
-    let name = event.target.name;
-    let clone = { ...nuevoEvento };
-    clone[name] = event.target.value;
-    setNuevoEvento(clone);
-  };
+function EditEvent() {
+    const parametrosDinamicos = useParams();
+    const navigate = useNavigate();
+  
+    const [eventEdited, setEventEdited] = useState(null);
+  
+    useEffect(async () => {
+      try {
+        const response = await service.get(
+          `/events/${parametrosDinamicos.eventId}`
+        );
+        setEventEdited(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }, [parametrosDinamicos.eventId]);
+    
+    const handleAll = (event) => {
+        let name = event.target.name;
+        let clone = { ...eventEdited };
+        clone[name] = event.target.value;
+        setEventEdited(clone);
+      };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
       try {
-        await service.post(`/events`, nuevoEvento);
+        await service.put(`/events/${parametrosDinamicos.eventId}`, eventEdited);
         navigate(`/events`);
       } catch (error) {
         console.log(error);
@@ -35,11 +40,11 @@ function AddEvent() {
     <div className="pageDiv">
       <form onSubmit={handleSubmit}>
         <div className="formCSS">
-          <span className="tituloForm">Add Event</span>
+          <span className="tituloForm">Edit Event</span>
           <label>
             Name:&nbsp;
             <input
-              value={nuevoEvento.name}
+              value={eventEdited.name}
               name="name"
               type="text"
               placeholder="Name"
@@ -49,7 +54,7 @@ function AddEvent() {
           <label>
             Date:&nbsp;
             <input
-              value={nuevoEvento.date}
+              value={eventEdited.date}
               name="date"
               type="date"
               onChange={handleAll}
@@ -58,7 +63,7 @@ function AddEvent() {
           <label>
             Time:&nbsp;
             <input
-              value={nuevoEvento.time}
+              value={eventEdited.time}
               name="time"
               type="string"
               placeholder="Time"
@@ -69,7 +74,7 @@ function AddEvent() {
             Description:&nbsp;
             <input
               className="textArea"
-              value={nuevoEvento.description}
+              value={eventEdited.description}
               name="description"
               type="textarea"
               placeholder="Description"
@@ -77,7 +82,7 @@ function AddEvent() {
             />
           </label>
           <div className="btnsForms">
-            <button type="submit">Add Event</button>
+            <button type="submit">Edit Event</button>
             <Link to="/">
               <button>Back</button>
             </Link>
@@ -88,4 +93,4 @@ function AddEvent() {
   );
 }
 
-export default AddEvent;
+export default EditEvent;

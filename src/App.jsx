@@ -17,6 +17,7 @@ import OnlyAdmin from "./components/OnlyAdmin";
 import EventList from "./pages/EventList";
 import AddEvent from "./pages/AddEvent";
 import EventDetails from "./pages/EventDetails";
+import EditAnimal from "./pages/EditAnimal";
 
 
 
@@ -39,6 +40,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/add-animal" element={<AddAnimal/>} />
         <Route path="/add-event" element={<AddEvent/>} />
+        <Route path="/animals/edit/:animalId" element={<EditAnimal/>} />
         <Route path="/animals/:animalId" element={<AnimalDetails/>} />
         <Route path="/events/:eventId" element={<EventDetails/>} />
         <Route path="/events" element={<EventList/>} />

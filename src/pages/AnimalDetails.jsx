@@ -44,6 +44,7 @@ function AnimalDetails() {
 
 
       <button id="btnDelete" onClick={handleDelete}>Delete</button>
+      <Link to={`/animals/edit/${parametrosDinamicos.animalId}`}><button>Edit</button></Link>
     </div>
   );
 }
