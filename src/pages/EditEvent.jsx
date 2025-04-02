@@ -2,25 +2,26 @@ import { useState, useParams } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import service from "../services/config.services";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function EditEvent() {
     const parametrosDinamicos = useParams();
     const navigate = useNavigate();
   
     const [eventEdited, setEventEdited] = useState(null);
-  
+
+    const getData = async () => {
+      try {
+        const response = await service.get(
+          `/events/${parametrosDinamicos.eventId}`
+        );
+        setEvent(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     useEffect( () => {
-      const getData = async () => {
-        try {
-          const response = await service.get(
-            `/events/${parametrosDinamicos.eventId}`
-          );
-          setEvent(response.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-  
       getData();
     }, [parametrosDinamicos.eventId]);
     
@@ -36,7 +37,7 @@ function EditEvent() {
 
       try {
         await service.put(`/events/${parametrosDinamicos.eventId}`, eventEdited);
-        navigate(`/events`);
+        getData();
       } catch (error) {
         console.log(error);
       }
@@ -52,6 +53,7 @@ function EditEvent() {
         }}
       >
         <h3>Buscando data del evento...</h3>
+        <ClipLoader color="green"/>
       </div>
     );
   }

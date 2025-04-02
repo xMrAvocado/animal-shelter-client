@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import service from "../services/config.services";
 
 function AddAnimal() {
+  // below state will hold the image URL from cloudinary. This will come from the backend.
+  const [imageUrl, setImageUrl] = useState(null);
+  const [isUploading, setIsUploading] = useState(false); // for a loading animation effect
+
   const [nuevoAnimal, setNuevoAnimal] = useState({
     name: "",
     type: "",
@@ -11,7 +15,6 @@ function AddAnimal() {
     age: 0,
     gender: "",
     race: "",
-    img: "",
   });
 
   const navigate = useNavigate();
@@ -23,16 +26,52 @@ function AddAnimal() {
     setNuevoAnimal(clone);
   };
 
+  const handleFileUpload = async (event) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+
+    if (!event.target.files[0]) {
+      // to prevent accidentally clicking the choose file button and not selecting a file
+      return;
+    }
+
+    setIsUploading(true); // to start the loading animation
+
+    const uploadData = new FormData(); // images and other files need to be sent to the backend in a FormData
+    uploadData.append("img", event.target.files[0]);
+    //                   |
+    //     this name needs to match the name used in the middleware in the backend => uploader.single("image")
+
+    try {
+      const response = await service.post("/upload",
+        uploadData
+      );
+      // !IMPORTANT: Adapt the request structure to the one in your proyect (services, .env, auth, etc...)
+
+      setImageUrl(response.data.imageUrl);
+      //                          |
+      //     this is how the backend sends the image to the frontend => res.json({ imageUrl: req.file.path });
+
+      setIsUploading(false); // to stop the loading animation
+    } catch (error) {
+      console.log(error)
+      navigate("/error");
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-      try {
-        await service.post(`/animals`, nuevoAnimal);
-        navigate(`/`);
-      } catch (error) {
-        console.log(error);
-      }
+    try {
+      //agragar al objeto la propiedad img con su correspondiente valor
+      let clone = {...nuevoAnimal}
+      clone.img = imageUrl
+      await service.post(`/animals`, clone);
+      navigate(`/`);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   return (
     <div className="pageDiv">
       <form onSubmit={handleSubmit}>
@@ -76,7 +115,6 @@ function AddAnimal() {
               </option>
             </select>
           </label>
-
           <label>
             Description:&nbsp;
             <input
@@ -110,7 +148,7 @@ function AddAnimal() {
               <option className="optionType" value="">
                 Option
               </option>
-              <option className="optionType" value="Male" selected>
+              <option className="optionType" value="Male">
                 Male
               </option>
               <option className="optionType" value="Female">
@@ -128,16 +166,25 @@ function AddAnimal() {
               onChange={handleAll}
             />
           </label>
-          <label>
-            Image:&nbsp;
+          <div>
+            <label>Image: </label>
             <input
-              value={nuevoAnimal.img}
+              type="file"
               name="img"
-              type="url"
-              placeholder="Image"
-              onChange={handleAll}
+              onChange={handleFileUpload}
+              disabled={isUploading}
             />
-          </label>
+            {/* below disabled prevents the user from attempting another upload while one is already happening */}
+          </div>
+          ;
+          {/* to render a loading message or spinner while uploading the picture */}
+          {isUploading ? <h3>... uploading image</h3> : null}
+          {/* below line will render a preview of the image from cloudinary */}
+          {imageUrl ? (
+            <div>
+              <img src={imageUrl} alt="img" width={200} />
+            </div>
+          ) : null}
           <div className="btnsForms">
             <button type="submit">Add Animal</button>
             <Link to="/">

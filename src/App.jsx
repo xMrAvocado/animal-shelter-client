@@ -1,6 +1,5 @@
 import "./App.css";
 import { Routes, Route } from "react-router";
-import { useEffect,useState } from "react";
 
 // pages
 import HomePage from "./pages/HomePage"
@@ -29,6 +28,7 @@ VER ROLES
 VER SERVICIOS
 */
 function App() {
+
   return (
     <div>
       <Navbar />
@@ -39,14 +39,14 @@ function App() {
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/add-animal" element={<AddAnimal/>} />
-        <Route path="/add-event" element={<AddEvent/>} />
-        <Route path="/animals/edit/:animalId" element={<EditAnimal/>} />
-        <Route path="/events/edit/:eventId" element={<EditEvent/>} />
-        <Route path="/animals/:animalId" element={<AnimalDetails/>} />
-        <Route path="/events/:eventId" element={<EventDetails/>} />
+        <Route path="/add-animal" element={<OnlyAdmin><AddAnimal/></OnlyAdmin>} />
+        <Route path="/add-event" element={<OnlyAdmin><AddEvent/></OnlyAdmin>} />
+        <Route path="/animals/edit/:animalId" element={<OnlyAdmin><EditAnimal/></OnlyAdmin>} />
+        <Route path="/events/edit/:eventId" element={<OnlyAdmin><EditEvent/></OnlyAdmin>} />
+        <Route path="/animals/:animalId" element={<OnlyPrivate><AnimalDetails/></OnlyPrivate>} />
+        <Route path="/events/:eventId" element={<OnlyPrivate><EventDetails/></OnlyPrivate>} />
         <Route path="/events" element={<EventList/>} />
-        <Route path="/" element={<OnlyPrivate> <HomePage /> </OnlyPrivate>} />
+        <Route path="/" element={ <HomePage /> } />
         <Route path="/admin" element={<OnlyAdmin> <AdminPage /> </OnlyAdmin>} />
         {/* error FE routes here... */}
 

@@ -33,7 +33,7 @@ function EventList() {
                   <h2>{eachEvent.name}</h2>
                   <h2>{eachEvent.date}/{eachEvent.time}</h2>
                   <p>{eachEvent.description}</p>
-                  <p>{eachEvent.participants}</p>
+                  {/*<p>{eachEvent.participants}</p>*/}
                   <Link key={eachEvent._id} to={`/events/${eachEvent._id}`}><button>Details</button></Link>
                 </div>
             );

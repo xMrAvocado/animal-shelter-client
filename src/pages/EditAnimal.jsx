@@ -2,25 +2,25 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import service from "../services/config.services";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function EditAnimal() {
     const parametrosDinamicos = useParams();
   const navigate = useNavigate();
 
   const [animal, setAnimal] = useState(null);
+  const getData = async () => {
+    try {
+      const response = await service.get(
+        `/animals/${parametrosDinamicos.animalId}`
+      );
+      setAnimal(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect( () => {
-    const getData = async () => {
-      try {
-        const response = await service.get(
-          `/animals/${parametrosDinamicos.animalId}`
-        );
-        setAnimal(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
     getData();
   }, [parametrosDinamicos.animalId]);
 
@@ -36,7 +36,8 @@ function EditAnimal() {
 
       try {
         await service.put(`/animals/${parametrosDinamicos.animalId}`, animal);
-        navigate(`/`);
+        getData();
+        navigate(`/animals/${parametrosDinamicos.animalId}`)
       } catch (error) {
         console.log(error);
       }
@@ -52,6 +53,7 @@ function EditAnimal() {
         }}
       >
         <h3>Buscando data del animal...</h3>
+        <ClipLoader color="green"/>
       </div>
     );
   }
@@ -142,16 +144,6 @@ function EditAnimal() {
               name="race"
               type="text"
               placeholder="Race"
-              onChange={handleAll}
-            />
-          </label>
-          <label>
-            Image:&nbsp;
-            <input
-              value={animal.img}
-              name="image"
-              type="url"
-              placeholder="Image"
               onChange={handleAll}
             />
           </label>
