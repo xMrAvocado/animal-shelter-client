@@ -76,7 +76,6 @@ function AddAnimal() {
     <div className="pageDiv">
       <form onSubmit={handleSubmit}>
         <div className="formCSS">
-          <span className="tituloForm">Add Animal</span>
           <label>
             Name:&nbsp;
             <input
@@ -93,7 +92,7 @@ function AddAnimal() {
               name="type"
               onChange={handleAll}
               value={nuevoAnimal.type}
-              id="addTypeSelector"
+              className="typeSelector"
             >
               <option className="optionType" value="">
                 Option
@@ -115,17 +114,19 @@ function AddAnimal() {
               </option>
             </select>
           </label>
+          <div className="formElementTA">
           <label>
-            Description:&nbsp;
-            <input
+            Description:&nbsp;</label>
+            <textarea
               className="textArea"
               value={nuevoAnimal.description}
               name="description"
               type="textarea"
               placeholder="Description"
+              rows="10" cols="20"
               onChange={handleAll}
             />
-          </label>
+          </div>
           <label>
             Age:&nbsp;
             <input
@@ -143,7 +144,7 @@ function AddAnimal() {
               name="gender"
               onChange={handleAll}
               value={nuevoAnimal.gender}
-              id="addGenderSelector"
+              className="typeSelector"
             >
               <option className="optionType" value="">
                 Option
@@ -185,10 +186,10 @@ function AddAnimal() {
               <img src={imageUrl} alt="img" width={200} />
             </div>
           ) : null}
-          <div className="btnsForms">
-            <button type="submit">Add Animal</button>
+          <div className="formButtons">
+            <button className="btnForm" type="submit">Add Animal</button>
             <Link to="/">
-              <button>Back</button>
+              <button className="btnBack">Back</button>
             </Link>
           </div>
         </div>

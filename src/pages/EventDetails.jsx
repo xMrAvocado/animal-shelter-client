@@ -6,7 +6,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { AuthContext } from "../context/auth.context";
 
 function EventDetails(props) {
-  const {userRole} = useContext(AuthContext)
+  const { userRole } = useContext(AuthContext);
   const parametrosDinamicos = useParams();
   const navigate = useNavigate();
 
@@ -65,32 +65,38 @@ function EventDetails(props) {
     );
   }
 
+  let date = new Date(event.date);
+
   return (
-    <div className="pageDiv">
-      <div>Event Details</div>
-      <h1>{event.organizer.name}</h1>
-      <h2>{event.name}</h2>
-      <h3>{event.date}</h3>
-      <h3>{event.time}</h3>
-      <p>{event.description}</p>
+    <div className="pageDiv" id="eventDetails">
+      <h1 className="shelterName">{event.organizer.name}</h1>
+      <h2 className="animalName">{event.name}</h2>
+      <div className="infoAnimal">
+      <h3 className="date">{date.toDateString()} at {event.time}</h3>
+      <p className="description">{event.description}</p>
+      </div>
+      <h2>People to help:</h2>
       {event.participants.map((eachParticipant) => {
-        return <p>{eachParticipant.name}</p>;
+        return <p className="nameUserList">{eachParticipant.name}</p>;
       })}
 
       {userRole === "admin" ? (
-        <>
+        <div className="rowButtons">
           <button className="btnDelete" onClick={handleDelete}>
             Delete
           </button>
           <Link to={`/events/edit/${parametrosDinamicos.eventId}`}>
             <button className="btnEdit">Edit</button>
           </Link>
-        </>
+        </div>
       ) : (
-        <button id="btnParticipate" onClick={handleParticipate}>
-          Participate
+        <button className="btnUser" onClick={handleParticipate}>
+          Participate 
         </button>
       )}
+      <Link to="/events">
+        <button className="btnBack">Back</button>
+      </Link>
     </div>
   );
 }

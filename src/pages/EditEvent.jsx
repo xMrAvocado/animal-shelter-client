@@ -1,5 +1,5 @@
-import { useState, useParams } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import service from "../services/config.services";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -15,7 +15,7 @@ function EditEvent() {
         const response = await service.get(
           `/events/${parametrosDinamicos.eventId}`
         );
-        setEvent(response.data);
+        setEventEdited(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -57,7 +57,7 @@ function EditEvent() {
       </div>
     );
   }
-
+  let date = new Date(eventEdited.date);
   return (
     <div className="pageDiv">
       <form onSubmit={handleSubmit}>
@@ -76,7 +76,7 @@ function EditEvent() {
           <label>
             Date:&nbsp;
             <input
-              value={eventEdited.date}
+              value={date}
               name="date"
               type="date"
               onChange={handleAll}
@@ -92,21 +92,23 @@ function EditEvent() {
               onChange={handleAll}
             />
           </label>
+          <div className="formElementTA">
           <label>
-            Description:&nbsp;
-            <input
+            Description:&nbsp;</label>
+            <textarea
               className="textArea"
               value={eventEdited.description}
               name="description"
               type="textarea"
               placeholder="Description"
+              rows="10" cols="20"
               onChange={handleAll}
             />
-          </label>
-          <div className="btnsForms">
-            <button type="submit">Edit Event</button>
-            <Link to="/">
-              <button>Back</button>
+          </div>
+          <div className="formButtons">
+            <button className="btnForm" type="submit">Edit Event</button>
+            <Link to="/events">
+              <button className="btnBack">Back</button>
             </Link>
           </div>
         </div>

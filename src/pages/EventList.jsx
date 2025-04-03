@@ -23,18 +23,18 @@ function EventList() {
 
   return (
     <div className="pageDiv" id="eventsContainer">
-      <h1>Event List</h1>
+      <h1 className="title">EVENT LIST</h1>
       <div id="animalEventCSS">
         {listEvents
           .map((eachEvent) => {
+            let date = new Date(eachEvent.date);
             return (
                 <div id="eachEventList">
-                    <h2>{eachEvent.organizer.name}</h2> 
+                    <h2 className="shelterName">{eachEvent.organizer.name}</h2> 
                   <h2>{eachEvent.name}</h2>
-                  <h2>{eachEvent.date}/{eachEvent.time}</h2>
-                  <p>{eachEvent.description}</p>
+                  <h2 className="date">{date.toDateString()} at {eachEvent.time}</h2>
                   {/*<p>{eachEvent.participants}</p>*/}
-                  <Link key={eachEvent._id} to={`/events/${eachEvent._id}`}><button>Details</button></Link>
+                  <Link key={eachEvent._id} to={`/events/${eachEvent._id}`}><button className="detailsButton">Details</button></Link>
                 </div>
             );
           })}

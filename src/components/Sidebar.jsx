@@ -27,7 +27,7 @@ function Sidebar(props) {
         opacity:"0.90",
         minHeight: "20vh",
         minWidth: "7vw", 
-        backgroundColor: "white",
+        backgroundColor: "#A2DFF7",
         position:"fixed", 
         top:"87px",
         transform: props.cambioScaleY,

@@ -39,9 +39,9 @@ function Signup() {
 
   return (
     <div className="pageDiv">
-      <h1>SIGN UP</h1>
-
       <form onSubmit={handleSignup}>
+      <div className="formAuth">
+      <h1>SIGN UP</h1>
         <label>Name:</label>
         <input
           type="text"
@@ -72,14 +72,16 @@ function Signup() {
 
         <br />
 
-        <button type="submit">Sign Up</button>
+        <button type="submit" className="btnFormAuth">Sign Up</button>
 
         {errorMessage !== null ? <p>{errorMessage}</p> : null}
+        </div>
       </form>
-
+      <div className="formAuth">
       <h3>You aready have an account?</h3>
-      <Link to={"/login"}><button>Log In</button></Link>
-    </div>
+      <Link to={"/login"}><button className="btnFormAuth">Log In</button></Link>
+      </div>
+      </div>
   );
 }
 

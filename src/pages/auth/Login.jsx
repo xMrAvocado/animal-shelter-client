@@ -7,8 +7,7 @@ import service from "../../services/config.services";
 //EMPEZAR SIEMPRE CON LA CONFIGURACION DE SERVICE
 
 function Login() {
-
-  const {authenticateUser} = useContext(AuthContext);
+  const { authenticateUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -22,61 +21,61 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await service.post(`/auth/login`,{
-        email:email,
-        password:password
-      })
+      const response = await service.post(`/auth/login`, {
+        email: email,
+        password: password,
+      });
 
-      console.log("usuario logeado", response)
+      console.log("usuario logeado", response);
 
-      localStorage.setItem("authToken", response.data.authToken)
+      localStorage.setItem("authToken", response.data.authToken);
 
       await authenticateUser();
-      navigate("/")
+      navigate("/");
     } catch (error) {
-      console.log(error)
-      console.log(error)
-      if(error.response && error.response.status === 400){
-        console.log(error.response.status)
-        console.log(error.response.data.errorMessage)
-        setErrorMessage(error.response.data.errorMessage)
-      }else{
-        
+      console.log(error);
+      console.log(error);
+      if (error.response && error.response.status === 400) {
+        console.log(error.response.status);
+        console.log(error.response.data.errorMessage);
+        setErrorMessage(error.response.data.errorMessage);
+      } else {
       }
     }
   };
 
   return (
     <div className="pageDiv">
-
-      <h1>LOG IN</h1>
-
       <form onSubmit={handleLogin}>
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleEmailChange}
-        />
+        <div className="formAuth">
+          <h1>LOG IN</h1>
+          <label>Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
 
-        <br />
+          <br />
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
 
-        <br />
+          <br />
 
-        <button type="submit">Log In</button>
+          <button type="submit" className="btnFormAuth">
+            Log In
+          </button>
 
-        {errorMessage !== null ? <p>{errorMessage}</p> : null}
+          {errorMessage !== null ? <p>{errorMessage}</p> : null}
+        </div>
       </form>
-      
     </div>
   );
 }

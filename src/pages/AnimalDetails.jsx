@@ -1,12 +1,12 @@
 import React from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import service from "../services/config.services";
 import ClipLoader from "react-spinners/ClipLoader";
 import { AuthContext } from "../context/auth.context";
 
 function AnimalDetails() {
-  const {userRole} = useContext(AuthContext)
+  const { userRole } = useContext(AuthContext);
 
   const parametrosDinamicos = useParams();
   const navigate = useNavigate();
@@ -67,34 +67,42 @@ function AnimalDetails() {
   }
 
   return (
-    <div className="pageDiv">
-      <div>AnimalDetails</div>
+    <div id="animalDetails">
       <img src={animal.img} width="250px" />
-      <h2>{animal.name}</h2>
-      <h2>{animal.creator.name}</h2>
-      <h3>{animal.type}</h3>
-      <h3>{animal.gender}</h3>
-      <h3>{animal.age} y/o</h3>
-      <h3>{animal.race}</h3>
-      <p>{animal.description}</p>
+      <h2 className="animalName">{animal.name}</h2>
+      <h3>from</h3>
+      <h2 className="shelterName">{animal.creator.name}</h2>
+      <div className="infoAnimal">
+        <div id="typeGenderAnimal">
+          <h2>{animal.type}</h2>
+          <h2>{animal.gender}</h2>
+        </div>
+        <h2>Age: {animal.age} y/o</h2>
+        <h2>Race: {animal.race}</h2>
+        <p className="description">{animal.description}</p>
+      </div>
+      <h2>People interested:</h2>
       {animal.interested.map((eachInterested) => {
-        return <p>{eachInterested.name}</p>;
+        return <p className="nameUserList">{eachInterested.name}</p>;
       })}
 
       {userRole === "admin" ? (
-        <>
+        <div className="rowButtons">
           <button className="btnDelete" onClick={handleDelete}>
             Delete
           </button>
           <Link to={`/animals/edit/${parametrosDinamicos.animalId}`}>
             <button className="btnEdit">Edit</button>
           </Link>
-        </>
+        </div>
       ) : (
-        <button id="btnParticipate" onClick={handleInterested}>
+        <button className="btnUser" onClick={handleInterested}>
           Apply for adoption
         </button>
       )}
+      <Link to="/">
+        <button className="btnBack">Back</button>
+      </Link>
     </div>
   );
 }

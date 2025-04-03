@@ -79,7 +79,7 @@ function EditAnimal() {
               name="type"
               onChange={handleAll}
               value={animal.type}
-              id="addTypeSelector"
+              className="typeSelector"
             >
               <option className="optionType" value="Dog">
                 Dog
@@ -98,18 +98,19 @@ function EditAnimal() {
               </option>
             </select>
           </label>
-
+          <div className="formElementTA">
           <label>
-            Description:&nbsp;
-            <input
+            Description:&nbsp;</label>
+            <textarea
               className="textArea"
               value={animal.description}
               name="description"
               type="textarea"
               placeholder="Description"
+              rows="10" cols="20"
               onChange={handleAll}
             />
-          </label>
+          </div>
           <label>
             Age:&nbsp;
             <input
@@ -127,7 +128,7 @@ function EditAnimal() {
               name="gender"
               onChange={handleAll}
               value={animal.gender}
-              id="addGenderSelector"
+              className="typeSelector"
             >
               <option className="optionType" value="Male">
                 Male
@@ -147,10 +148,10 @@ function EditAnimal() {
               onChange={handleAll}
             />
           </label>
-          <div className="btnsForms">
-            <button type="submit">Edit Animal</button>
+          <div className="formButtons">
+            <button className="btnForm" type="submit">Edit Animal</button>
             <Link to="/">
-              <button>Back</button>
+              <button className="btnBack">Back</button>
             </Link>
           </div>
         </div>

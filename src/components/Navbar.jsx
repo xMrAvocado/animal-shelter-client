@@ -35,7 +35,7 @@ function Navbar() {
             
            
             <div id="divTituloCSS">
-            <h2 style={{width: "15vW", textAlign: "center"}}>Shelter App</h2>
+            <h2 style={{width: "15vW", textAlign: "center", marginLeft: "10px"}}>Shelter</h2>
             </div>
             <div id="divBtnSidebarCss"  onClick={() => handleStateSidebar()}>
                 <img width={"40vW"} height={"40vW"} src="https://res.cloudinary.com/dh8naz2ht/image/upload/v1743177755/menu-icon_rlrzj5.png" alt="logo-menu"/>

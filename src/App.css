@@ -1,21 +1,34 @@
 body {
   margin: 0;
+  background-color: #D8CBB3;
+  color: #F5F5F5;
 }
 
 a {
   text-decoration: none;
 }
 
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #F5F5F5;
+}
+
+.title{
+  color: #FF6F61;
+}
 /*NAVBAR*/
 
 #navBarCSS {
-  background-color: green;
+  background-color: #A2DFF7;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  width: 100vw;
+  width: 100%;
   padding: 10px 0px;
   transition: all 0.4s;
 }
@@ -24,7 +37,7 @@ a {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-left: 30px;
+  padding-right: 50px;
 }
 
 #divBtnSidebarCss:hover {
@@ -38,7 +51,7 @@ a {
 }
 
 .menuOption:hover {
-  color: green;
+  color: #4a4a4a;
 }
 
 #divTituloCSS {
@@ -49,7 +62,7 @@ a {
 
 /*FOOTER*/
 #footer {
-  background-color: green;
+  background-color: #A2DFF7;
   color: black;
   display: flex;
   flex-direction: column;
@@ -68,10 +81,393 @@ a {
   color: white;
 }
 
+/*ANIMALS*/
 
+#animalsByTypeContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+#animalListCSS{
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+#eachAnimalList{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 21%;
+  margin: 70px;
+  padding: 20px;
+  background-color: #A8D5BA;
+  border: #A2DFF7 solid 3px;
+  border-radius: 5px;
+  color: #4a4a4a;
+  font-size: large;
+}
+
+.typeSelector{
+  height: 40px;
+  width: 120px;
+  background-color: #A2DFF7;
+  border-color: #A2DFF7;
+  border-radius: 10px;
+  color: #4a4a4a;
+  font-weight: bold;
+  font-size: large;
+}
+
+.typeSelector:hover{
+  cursor: pointer;
+}
+
+.detailsButton{
+  height: 40px;
+  width: 120px;
+  background-color: #A2DFF7;
+  border-color: #A2DFF7;
+  border-radius: 10px;
+  color: #4a4a4a;
+  font-weight: bold;
+  font-size: large;
+}
+
+.detailsButton:hover{
+  cursor: pointer;
+  box-shadow: 2px 2px black;
+}
+
+.animalName{
+  color: #FF6F61;
+  padding: 10px;
+  background-color: white;
+  border-color: white;
+  border-radius: 10px;
+}
+
+.shelterName{
+  color: #A8D5BA;
+  padding: 10px;
+  background-color: white;
+  border-color: white;
+  border-radius: 10px;
+}
+
+#animalDetails{
+  margin-top: 70px;
+  margin-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #4a4a4a;
+}
+
+.rowButtons{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 10%;
+}
+
+.infoAnimal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
+  border-color: white;
+  border-radius: 10px;
+}
+
+.description{
+  width: 300px;
+  text-align: center;
+}
+
+.btnDelete{
+  padding: 10px;
+  background-color: #FF6F61;
+  border-color: #FF6F61;
+  border-radius: 10px;
+  color: #4a4a4a;
+  font-weight: bold;
+  font-size: large;
+}
+
+.btnDelete:hover{
+  cursor: pointer;
+  box-shadow: 2px 2px black;
+}
+
+.btnEdit{
+  padding: 10px;
+  background-color: #FF6F61;
+  border-color: #FF6F61;
+  border-radius: 10px;
+  color: #4a4a4a;
+  font-weight: bold;
+  font-size: large;
+}
+
+.btnEdit:hover{
+  cursor: pointer;
+  box-shadow: 2px 2px black;
+}
+
+.btnUser{
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #A8D5BA;
+  border-color: #A8D5BA;
+  border-radius: 10px;
+  color: #4a4a4a;
+  font-weight: bold;
+  font-size: large;
+}
+
+.btnUser:hover{
+  cursor: pointer;
+  box-shadow: 2px 2px black;
+}
+
+.btnBack{
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #4a4a4a;
+  border-color: #4a4a4a;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: large;
+}
+
+.btnBack:hover{
+  cursor: pointer;
+  box-shadow: 2px 2px black;
+}
+
+.nameUserList{
+  padding: 10px;
+  background-color: white;
+  border-color: white;
+  border-radius: 10px;
+  color: #4a4a4a;
+  font-weight: bold;
+  font-size: large;
+}
+
+#typeGenderAnimal{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 50%;
+}
+
+/*EVENTS*/
+
+#eventsContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#eachEventList{
+  margin: 50px;
+  padding: 20px 10px 20px 10px;
+  background-color: white;
+  border: #A2DFF7 solid 3px;
+  border-radius: 5px;
+  color: #4a4a4a;
+  font-size: large;
+}
+
+#eventDetails{
+  margin-top: 70px;
+  margin-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #4a4a4a;
+}
+
+.date{
+  color: #FF6F61;
+}
 
 .pageDiv{
   margin-top: 70px;
   margin-bottom: 70px;
+}
+
+/*FORMS*/
+.formCSS {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: left;
+  justify-content: space-between;
+  height: 700px;
+  font-size: larger;
+  padding-bottom: 35px;
+  margin: 0px 500px 0px 500px;
+}
+
+.formCSS label {
+  font-weight: bolder;
+}
+
+.formCSS input {
+  font-weight: bolder;
+}
+
+.formCSS textarea {
+  font-weight: bolder;
+}
+
+.formElementTA{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: left;
+  justify-content: space-between;
+}
+
+.formButtons{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 10%;
+}
+
+.btnForm{
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #A8D5BA;
+  border-color: #A8D5BA;
+  border-radius: 10px;
+  color: #4a4a4a;
+  font-weight: bold;
+  font-size: large;
+  margin-right: 50px;
+}
+
+.btnForm:hover{
+  cursor: pointer;
+  box-shadow: 2px 2px black;
+}
+
+.formAuth {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: left;
+  justify-content: space-between;
+  font-size: larger;
+  padding-bottom: 35px;
+  margin: 0px 500px 0px 500px;
+}
+
+.formAuth label {
+  font-weight: bolder;
+}
+
+.formAuth input {
+  font-weight: bolder;
+}
+
+.btnFormAuth{
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #A8D5BA;
+  border-color: #A8D5BA;
+  border-radius: 10px;
+  color: #4a4a4a;
+  font-weight: bold;
+  font-size: large;
+  margin-right: 50px;
+  width: 100px;
+}
+
+.btnFormAuth:hover{
+  cursor: pointer;
+  box-shadow: 2px 2px black;
+}
+
+/*MOBILE PHONE CHANGES*/
+@media ((width <= 1150px) and (width > 360px)) {
+  #menuWord{
+    display: none;
+  }
+  #divBtnSidebarCss {
+    padding-right: 10px;
+  }
+  #footer{
+    padding-top: 5px;
+  }
+  #eachAnimalList{
+    flex: 0 0 41%;
+    margin: 7px;
+  }
+  #typeGenderAnimal{
+    width: 60%;
+  }
+  .rowButtons{
+    width: 30%;
+  }
+#eachEventList{
+  margin: 7px;
+}
+.formCSS {
+  padding-bottom: 0px;
+  padding-top: 0px;
+    margin: 0px 20px 0px 20px;
+  }
+  .formAuth {
+    padding-bottom: 0px;
+    padding-top: 0px;
+      margin: 0px 20px 0px 20px;
+    }
+}
+
+@media (width <= 360px) {
+  #menuWord{
+    display: none;
+  }
+  #divBtnSidebarCss {
+    padding-right: 10px;
+  }
+  #footer{
+    padding-top: 5px;
+  }
+  #animalListCSS{
+    flex-direction: column;
+  }
+  #eachAnimalList{
+    flex: 0 0 41%;
+    margin: 20px;
+  }
+  #typeGenderAnimal{
+    width: 50%;
+  }
+  .rowButtons{
+    width: 50%;
+  }
+  #eachEventList{
+    margin: 10px;
+  }
+  .formCSS {
+    margin: 0px 20px 0px 20px;
+  }
+  .formAuth {
+    margin: 0px 20px 0px 20px;
+  }
 }

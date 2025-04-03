@@ -39,8 +39,7 @@ function AnimalList() {
 
   return (
     <div className="pageDiv" id="animalsByTypeContainer">
-      <h1>Animal List</h1>
-      <select onChange={handleSelectType} value={animalType} id="typeSelector">
+      <select onChange={handleSelectType} value={animalType} className="typeSelector">
         <option className="optionType" value="Dog">
           Dog
         </option>
@@ -63,10 +62,9 @@ function AnimalList() {
             return (
               
                 <div id="eachAnimalList">
-                    <img src={eachAnimal.img} width="250px"></img>
-                  <h2>{eachAnimal.name}</h2>
-                  <h2>{eachAnimal.creator.name}</h2>
-                  <Link key={eachAnimal._id} to={`/animals/${eachAnimal._id}`}><button>Details</button></Link>
+                    <img src={eachAnimal.img} width="200px" height="200px"></img>
+                  <h2 className="animalName">{eachAnimal.name}</h2>
+                  <Link key={eachAnimal._id} to={`/animals/${eachAnimal._id}`}><button className="detailsButton">Details</button></Link>
                 </div>
             );
           })}

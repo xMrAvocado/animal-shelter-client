@@ -66,21 +66,24 @@ function AddEvent() {
               onChange={handleAll}
             />
           </label>
+          <div className="formElementTA">
           <label>
             Description:&nbsp;
-            <input
+            </label>
+            <textarea
               className="textArea"
               value={nuevoEvento.description}
               name="description"
               type="textarea"
               placeholder="Description"
+              rows="10" cols="20"
               onChange={handleAll}
             />
-          </label>
-          <div className="btnsForms">
-            <button type="submit">Add Event</button>
-            <Link to="/">
-              <button>Back</button>
+            </div>
+          <div className="formButtons">
+            <button className="btnForm" type="submit">Add Event</button>
+            <Link to="/events">
+              <button className="btnBack">Back</button>
             </Link>
           </div>
         </div>
