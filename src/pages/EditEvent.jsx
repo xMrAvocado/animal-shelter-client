@@ -38,6 +38,7 @@ function EditEvent() {
       try {
         await service.put(`/events/${parametrosDinamicos.eventId}`, eventEdited);
         getData();
+        navigate(`/events/${parametrosDinamicos.eventId}`)
       } catch (error) {
         console.log(error);
       }
@@ -58,6 +59,7 @@ function EditEvent() {
     );
   }
   let date = new Date(eventEdited.date);
+  
   return (
     <div className="pageDiv">
       <form onSubmit={handleSubmit}>
@@ -76,7 +78,7 @@ function EditEvent() {
           <label>
             Date:&nbsp;
             <input
-              value={date}
+              value={date.toISOString().split('T')[0]}
               name="date"
               type="date"
               onChange={handleAll}

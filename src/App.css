@@ -402,6 +402,103 @@ a:visited {
   box-shadow: 2px 2px black;
 }
 
+/*ABOUT PROJECT AND ME*/
+#aboutDivCSS {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 100px;
+  padding-top: 90px;
+}
+
+.descripcionProyecto{
+  background-color: #A8D5BA;
+  border: #1b1b1b solid 3px;
+  border-radius: 5px;
+  color: #4a4a4a;
+  font-size: large;
+  font-weight: bold;
+  margin: 20px 500px 20px 500px;
+  padding:20px 30px 20px 30px;
+  word-spacing: 4px;
+}
+
+.descripcionEstudiante{
+  background-color: #A8D5BA;
+  border: #1b1b1b solid 3px;
+  border-radius: 5px;
+  color: #4a4a4a;
+  font-size: large;
+  font-weight: bold;
+  margin: 20px 500px 0px 500px;
+  padding:10px 30px 10px 30px;
+  word-spacing: 4px;
+}
+
+#aboutDivCSS h1 {
+  color: #ff6b6b;
+  text-decoration: underline;
+}
+
+.datosEstudiante {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.enlacesEstudiante {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.descripcionEstudiante {
+  width: 300px;
+  text-align: left;
+}
+
+.linkedin {
+  background-color: blue;
+  border: 2px solid #000;
+  border-color: blue;
+  border-radius: 10px;
+  color: #fff6e5;
+  font-weight: bolder;
+  padding: 10px;
+}
+
+.linkedin:hover {
+  border-color: black;
+  box-shadow: 2px 2px black;
+}
+
+.github {
+  background-color: grey;
+  border: 2px solid #000;
+  border-color: grey;
+  border-radius: 10px;
+  color: #fff6e5;
+  font-weight: bolder;
+  padding: 10px;
+}
+
+.github:hover {
+  border-color: black;
+  box-shadow: 2px 2px black;
+}
+
+.descripcionProyecto {
+  width: 80vw;
+  font-size: larger;
+  text-align: center;
+  align-items: center;
+}
+
 /*MOBILE PHONE CHANGES*/
 @media ((width <= 1150px) and (width > 360px)) {
   #menuWord{

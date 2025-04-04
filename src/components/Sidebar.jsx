@@ -30,6 +30,7 @@ function Sidebar(props) {
         backgroundColor: "#A2DFF7",
         position:"fixed", 
         top:"87px",
+        right: "0",
         transform: props.cambioScaleY,
         transition: "all 0.4s",
     }
@@ -40,8 +41,8 @@ function Sidebar(props) {
             <Link to="/"><h2 style={{textAlign: "right"}} className="menuOption">Animal List</h2></Link>
 
             <Link to="/events"><h2 style={{textAlign: "right"}} className="menuOption">Event List</h2></Link>
-            <br/>
-
+            <Link to="/about"><h2 className="menuOption">About Dev</h2></Link>
+            
             {
             userRole === "admin"
             ?

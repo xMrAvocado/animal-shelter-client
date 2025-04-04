@@ -8,6 +8,9 @@ import Login from "./pages/auth/Login"
 import Signup from "./pages/auth/Signup"
 import AddAnimal from "./pages/AddAnimal";
 import AnimalDetails from "./pages/AnimalDetails";
+import NotFound from "./pages/NotFound";
+import Error from "./pages/Error";
+import About from "./pages/About";
 // components
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer";
@@ -39,6 +42,7 @@ function App() {
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/about" element={<About />}></Route>
         <Route path="/add-animal" element={<OnlyAdmin><AddAnimal/></OnlyAdmin>} />
         <Route path="/add-event" element={<OnlyAdmin><AddEvent/></OnlyAdmin>} />
         <Route path="/animals/edit/:animalId" element={<OnlyAdmin><EditAnimal/></OnlyAdmin>} />
@@ -50,6 +54,8 @@ function App() {
         <Route path="/admin" element={<OnlyAdmin> <AdminPage /> </OnlyAdmin>} />
         {/* error FE routes here... */}
 
+        <Route path="/error" element={<Error />}/>
+        <Route path="*" element={<NotFound />}/>
       </Routes>
 
       <Footer />
