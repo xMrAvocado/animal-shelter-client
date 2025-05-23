@@ -11,6 +11,8 @@ import AnimalDetails from "./pages/AnimalDetails";
 import NotFound from "./pages/NotFound";
 import Error from "./pages/Error";
 import About from "./pages/About";
+import Profile from "./pages/Profile";
+
 // components
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer";
@@ -47,6 +49,7 @@ function App() {
         <Route path="/add-event" element={<OnlyAdmin><AddEvent/></OnlyAdmin>} />
         <Route path="/animals/edit/:animalId" element={<OnlyAdmin><EditAnimal/></OnlyAdmin>} />
         <Route path="/events/edit/:eventId" element={<OnlyAdmin><EditEvent/></OnlyAdmin>} />
+        <Route path="/profile" element={<OnlyPrivate><Profile/></OnlyPrivate>} />
         <Route path="/animals/:animalId" element={<OnlyPrivate><AnimalDetails/></OnlyPrivate>} />
         <Route path="/events/:eventId" element={<OnlyPrivate><EventDetails/></OnlyPrivate>} />
         <Route path="/events" element={<EventList/>} />

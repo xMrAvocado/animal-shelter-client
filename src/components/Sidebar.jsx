@@ -41,7 +41,7 @@ function Sidebar(props) {
             <Link to="/"><h2 style={{textAlign: "right"}} className="menuOption">Animal List</h2></Link>
 
             <Link to="/events"><h2 style={{textAlign: "right"}} className="menuOption">Event List</h2></Link>
-            <Link to="/about"><h2 className="menuOption">About Dev</h2></Link>
+            <Link to="/about"><h2 style={{textAlign: "right"}}className="menuOption">About Dev</h2></Link>
             
             {
             userRole === "admin"
@@ -66,6 +66,7 @@ function Sidebar(props) {
             :
             <>
             <Link onClick={handleLogout}><h2 style={{textAlign: "right"}} className="menuOption">Log Out</h2></Link>
+            <Link to="/profile"><h2 style={{textAlign: "right"}} className="menuOption">Profile</h2></Link>
             </>
             
           }
